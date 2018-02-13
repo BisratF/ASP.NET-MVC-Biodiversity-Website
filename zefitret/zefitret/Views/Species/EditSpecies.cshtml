@@ -1,0 +1,219 @@
+﻿
+@model zefitret.Models.SpeciesModelClass
+
+@{
+    ViewBag.Title = "EditSpecies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+@using (Html.BeginForm("EditSpecies", "Species", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+            @Html.HiddenFor(a => a.MId)
+
+            <div class="col-sm-12">
+                @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="MCategory" class="control-label">Category</label>
+                    @Html.DropDownListFor(x => x.MCategory, new[] {
+                    new SelectListItem() {Text = "Amphibians",},
+                    new SelectListItem() {Text = "reptiles",},
+                    new SelectListItem() {Text = "birds",},
+                    new SelectListItem() {Text = "invertebrates",},
+                    new SelectListItem() {Text = "Mammals",},
+                    new SelectListItem() {Text = "flora",},
+                        }, "Choose an option", new { @class = "form-control" })
+
+
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="MSName" class="control-label">Scientific Name</label>
+                    @Html.EditorFor(a => a.MSName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(a => a.MSName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="MLocalName" class="control-label">Local Name</label>
+                    @Html.EditorFor(a => a.MLocalName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(a => a.MLocalName, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="MCommonName" class="control-label">Common Name</label>
+                    @Html.EditorFor(a => a.MCommonName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(a => a.MCommonName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="col-sm-6">
+
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="MPicTakenBy" class="control-label">Pictures By</label>
+                    @Html.EditorFor(a => a.MPicTakenBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(a => a.MPicTakenBy, "", new { @class = "text-danger" })
+                </div>
+
+
+                <label for="MContentBy" class="control-label">Content By</label>
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    @Html.EditorFor(a => a.MContentBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(a => a.MContentBy, "", new { @class = "text-danger" })
+                </div>
+
+
+                <label for="MEditedBy" class="control-label">Edited By</label>
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    @Html.EditorFor(a => a.MEditedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(a => a.MEditedBy, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    //----- for picture view and edit ------
+
+    <div class="container">
+        <div class="row">
+            <div class="offset-1 col-sm-10 col-sm-offset-1">
+                <div class="col-md-12">
+                    <label for="Description" class="control-label">Description</label>
+
+                    @Html.TextAreaFor(a => a.MDescription, new { htmlAttributes = new { @class = "form-control", @id = "rectangle-description" } })
+                    @Html.ValidationMessageFor(a => a.MDescription, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row">
+
+
+            <div class="col-sm-3">
+
+                <div class="col-md-12 ">
+                    @if (!string.IsNullOrEmpty(Model.MainSrc))
+                {
+                        <img src='@Model.MainSrc' id="picForEdit" class="img-responsive img-thumbnail" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/template/image-logo/flora.png" id="picForEdit" class="img-responsive img-rounded" />
+                    }
+
+                </div>
+                <div class="col-md-12">
+
+                    <p><input type="file" name="MainImg" /></p>
+
+                </div>
+
+            </div>
+            <div class="col-sm-3">
+
+                <div class="col-md-12">
+                    @if (!string.IsNullOrEmpty(Model.SecondSrc))
+                {
+                        <img src='@Model.SecondSrc' id="picForEdit" class="img-responsive img-thumbnail" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/template/image-logo/flora.png" id="picForEdit" class="img-responsive img-rounded" />
+                    }
+
+
+                </div>
+                <div class="col-md-12">
+
+                    <input type="file" name="SecondImg" />
+
+                </div>
+
+            </div>
+            <div class="col-sm-3">
+                <div class="col-md-12">
+                    @if (!string.IsNullOrEmpty(Model.ThirdSrc))
+                {
+                        <img src='@Model.ThirdSrc' id="picForEdit" class="img-responsive img-thumbnail" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/template/image-logo/flora.png" id="picForEdit" class="img-responsive img-rounded" />
+                    }
+
+
+                </div>
+                <div class="col-md-12">
+
+                    <input type="file" name="ThirdImg" />
+
+                </div>
+
+
+            </div>
+            <div class="col-sm-3">
+                <div class="col-md-12">
+                    @if (!string.IsNullOrEmpty(Model.FourthSrc))
+                {
+                        <img src='@Model.FourthSrc' id="picForEdit" class="img-responsive img-thumbnail" />
+                    }
+                    else
+                    {
+                        <img src="~/Content/template/image-logo/flora.png" id="picForEdit" class="img-responsive img-rounded" />
+                    }
+
+
+                </div>
+                <div class="col-md-12">
+
+                    <input type="file" name="FourthImg" />
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="offset-6" style="margin-top:15px;align-items:center;">
+            <button type="submit" class="btn btn-success">Save</button>
+            @Html.ActionLink("Cancel", "Index", "Species", new object { }, new { @class = "btn btn-secondary", @style = "padding-left:20px !Important;" })
+
+        </div>
+    </div>
+
+
+
+
+
+}
+
+
+
+
+

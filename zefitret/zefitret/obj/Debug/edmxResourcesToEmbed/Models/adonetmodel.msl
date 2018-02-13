@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="zefitretuserdbModelStoreContainer" CdmEntityContainer="zefitretuserdbEntities">
+    <EntitySetMapping Name="SpeciesDataTables">
+      <EntityTypeMapping TypeName="zefitretuserdbModel.SpeciesDataTable">
+        <MappingFragment StoreEntitySet="SpeciesDataTable">
+          <ScalarProperty Name="SId" ColumnName="SId" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="SName" ColumnName="SName" />
+          <ScalarProperty Name="LocalName" ColumnName="LocalName" />
+          <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MainPic" ColumnName="MainPic" />
+          <ScalarProperty Name="FileNameMain" ColumnName="FileNameMain" />
+          <ScalarProperty Name="SecPic" ColumnName="SecPic" />
+          <ScalarProperty Name="FileNameSecond" ColumnName="FileNameSecond" />
+          <ScalarProperty Name="ThirdPic" ColumnName="ThirdPic" />
+          <ScalarProperty Name="FourthPic" ColumnName="FourthPic" />
+          <ScalarProperty Name="PicTakenBy" ColumnName="PicTakenBy" />
+          <ScalarProperty Name="ContentBy" ColumnName="ContentBy" />
+          <ScalarProperty Name="EditedBy" ColumnName="EditedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTables">
+      <EntityTypeMapping TypeName="zefitretuserdbModel.UserTable">
+        <MappingFragment StoreEntitySet="UserTable">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,271 @@
+﻿@{ 
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Zefitret</title>
+    <!-- Bootstrap core CSS-->
+    <link href="~/Content/template/vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Page level plugin CSS-->
+    <!-- Custom styles for this template-->
+    <link href="~/Content/template/css/sb-admin.css" rel="stylesheet" />
+    <link href="~/Content/template/css/style.css" rel="stylesheet" />
+    <link href="~/Content/template/css/owl.carousel.css" rel="stylesheet" />
+</head>
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    @using (Html.BeginForm("Index", "Species", FormMethod.Get))
+    {
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+
+            <a style="color:#fff" href="http://www.zefitret.com">
+                <div> <img src="~/Content/template/image-logo/logo.jpg" class="img-circle" id="navbar-img" />Zefitret.com <=Original site</div>
+            </a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                        <a class="nav-link" href="#">
+                            <i style="margin-left:25%;margin-top:25%;"></i>
+                            <span class="nav-link-text">Species</span>
+                        </a>
+
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Amphibians">
+                        <a class="nav-link" href="@Url.Action("Index", new { Viewer = ViewBag.Amphibians })">
+
+                            <i>
+                                <img src="~/Content/template/image-logo/frog.png" class="logo-img" />
+                            </i>
+                            <span class="nav-link-text">Amphibians</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Birds">
+                        <a class="nav-link" href="@Url.Action("Index", new { Viewer = ViewBag.birds })">
+
+                            <i>
+                                <img src="~/Content/template/image-logo/bird2.png" class="logo-img" />
+                            </i>
+                            <span class="nav-link-text">Birds</span>
+                        </a>
+
+
+
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Flora">
+                        <a class="nav-link" href="@Url.Action("Index", new { Viewer = ViewBag.Flowers })">
+
+                            <i>
+                                <img src="~/Content/template/image-logo/flora.png" class="logo-img" />
+                            </i>
+                            <span class="nav-link-text">Flora</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Invertebrates">
+                        <a class="nav-link" href="@Url.Action("Index", new { Viewer = ViewBag.bugs })">
+
+                            <i>
+                                <img src="~/Content/template/image-logo/bug.png" class="logo-img" />
+                            </i>
+                            <span class="nav-link-text">Invertebrates</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Mammals">
+                        <a class="nav-link" href="@Url.Action("Index", new { Viewer = ViewBag.mammals })">
+
+                            <i>
+                                <img src="~/Content/template/image-logo/monkey.png" class="logo-img" />
+                            </i>
+                            <span class="nav-link-text">Mammals</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reptiles">
+                        <a class="nav-link" href="@Url.Action("Index", new { Viewer = ViewBag.Reptiles })">
+
+                            <i>
+                                <img src="~/Content/template/image-logo/lizard.png" class="logo-img" />
+                            </i>
+                            <span class="nav-link-text">Reptiles</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav sidenav-toggler">
+                    <li class="nav-item">
+                        <a class="nav-link text-center" id="sidenavToggler">
+                            <i class="fa fa-fw fa-angle-left"></i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+
+
+                    <li class="nav-item">
+
+                    </li>
+                    <li class="nav-item">
+                        @using zefitret.Models
+                        @{var Vuser = Session["user"] as UsersModel;
+                        }
+                        @{if (Vuser != null)
+                            {
+                                <i style="color:#ffffff;"><img src="~/Content/template/image-logo/user2.png" style="width:2em;height:2em;" class="img-circle" /> Hey @Vuser.UserName</i>
+                                <i style="margin-top:5px;">@Html.ActionLink("Logout", "Logout", "Account", new object { }, new { @class = "btn btn-outline-primary btn-sm" })</i>
+
+                            }
+                            else if (Vuser == null)
+                            {
+                                <i style="margin-top:5px;color:#ffffff;">@Html.ActionLink("Log In", "LogIn", "Account", new object { }, new { @class = "btn btn-outline-primary btn-sm" })</i>
+                            }
+
+                        }
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">@Html.ActionLink("Home", "Index", "Species")</a>
+                    </li>
+                    <li class="breadcrumb-item active">@ViewBag.Title</li>
+                </ol>
+                <!-- Icon Cards-->
+                <div class="row">
+                    <div class="col-xl-4 col-sm-6 mb-3">
+                        @using zefitret.Models
+                        @{
+                            if (Vuser != null)
+                            {
+                                @Html.ActionLink("Create New Specie", "AddnewSpecies", "Species", new object { }, new { @class = "btn btn-outline-success btn-md" })
+                                @Html.ActionLink("Manage Users", "Users", "Account", new object { }, new { @class = "btn btn-outline-info btn-md" })
+                            }
+
+                        }
+                    </div>
+                    <div class="col-xl-4 col-sm-6 mb-3 link-col" id="category">
+                        @ViewBag.Category
+                    </div>
+                    <div class="col-xl-3 col-sm-6 mb-3">
+                        @using (Html.BeginForm())
+                        {
+                            <span class="input-group-btn">
+                                @Html.TextBox("SearchValue", null, new { @class = "form-control",@id= "searchBox",@placeholder="Search..." })
+
+                                <button class="btn btn-primary" type="submit" id="SearchBtn">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        }
+
+                    </div>
+
+                </div>
+                <!-- Area Chart Example-->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        @RenderBody()
+                    </div>
+
+
+                </div>
+                <div class="row">
+
+
+                </div>
+                <!-- Example DataTables Card-->
+
+            </div>
+            <!-- /.container-fluid-->
+            <!-- /.content-wrapper-->
+            <footer class="sticky-footer">
+                <div class="container">
+                    <div class="text-center">
+                        <small>Copyright © zefitret.com 2017</small>
+                    </div>
+                </div>
+            </footer>
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+            <!-- Logout Modal-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.html">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bootstrap core JavaScript-->
+            <script src="~/Content/template/vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="~/Content/template/vendor/jquery/jquery.min.js"></script>
+            <script src="~/Content/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="~/Content/template/vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Page level plugin JavaScript-->
+            <!-- Custom scripts for all pages-->
+            <script src="~/Content/template/js/sb-admin.min.js"></script>
+            <!-- Custom scripts for other pages pages-->
+
+            <script src="~/Content/template/js/jquery-2.1.4.min.js"></script>
+
+            <script src="~/Content/template/js/owl.carousel.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $("#owl-demo2").owlCarousel({
+                        items: 1,
+                        lazyLoad: false,
+                        autoPlay: false,
+                        navigation: false,
+                        navigationText: false,
+                        pagination: true,
+                    });
+                });
+            </script>
+
+            <script src="~/Content/template/js/responsiveslides.min.js"></script>
+            <script>
+                $(function () {
+                    $("#slider").responsiveSlides({
+                        auto: false,
+                        nav: true,
+                        manualControls: '#slider3-pager',
+                    });
+                });
+            </script>
+        </div>
+                            }
+</body>
+
+
+
+
+
+
+
+</html>

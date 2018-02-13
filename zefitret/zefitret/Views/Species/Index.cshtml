@@ -1,0 +1,44 @@
+﻿@model IEnumerable<zefitret.Models.SpeciesModelClass>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+        @foreach (var item in Model)
+    {
+        <div class="col-lg-6 col-md-6 portfolio-item">
+            <a href="@Url.Action("SpeciesDetail", new { DetailId = item.MId })" class="link-col">
+
+                @if (item.MMainPic != null)
+                {
+                    var base64 = Convert.ToBase64String(item.MMainPic);
+                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    <img src='@imgsrc' class="img-responsive" id="index-image" />
+                }
+                else if (item.MMainPic == null)
+                {
+                    <img src="~/Content/template/image-logo/flora.png" />
+                }
+
+                <h3 class="link-col" id="div-title">
+                    @Html.DisplayFor(model => item.MSName)
+                </h3>
+            </a>
+            <p id="div-title">Content about this species is comming soon</p>
+
+
+
+
+            @Html.ActionLink("Edit", "EditSpecies", new { EId = item.MId }, new { @class = "btn btn-primary", @id = "div-title" })
+            @Html.ActionLink("Delete", "DeleteSpecies", new { DeleteId = item.MId }, new { @class = "btn btn-danger" })
+
+        </div>
+
+    }
+</div>
+
+
+

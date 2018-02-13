@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="zefitretuserdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SpeciesDataTable">
+    <Key>
+      <PropertyRef Name="SId" />
+    </Key>
+    <Property Name="SId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CommonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="400" FixedLength="true" Unicode="true" />
+    <Property Name="MainPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FileNameMain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FileNameSecond" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThirdPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="FourthPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PicTakenBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContentBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EditedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Privilege" Type="String" />
+  </EntityType>
+  <EntityContainer Name="zefitretuserdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SpeciesDataTables" EntityType="Self.SpeciesDataTable" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+  </EntityContainer>
+</Schema>

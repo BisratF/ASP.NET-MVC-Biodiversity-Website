@@ -1,0 +1,109 @@
+﻿@model zefitret.Models.SpeciesDataTable
+
+@{
+    ViewBag.Title = "Add New Species";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddNewSpecies", "Species", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="Category" class="control-label">Category</label>
+                    @Html.DropDownListFor(x => x.Category, new[] {
+                new SelectListItem() {Text = "Amphibians",},
+                new SelectListItem() {Text = "reptiles",},
+                new SelectListItem() {Text = "birds",},
+                new SelectListItem() {Text = "invertebrates",},
+                new SelectListItem() {Text = "Mammals",},
+                new SelectListItem() {Text = "flora",},
+                    }, "Choose an option", new { @class = "form-control" })
+
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="SName" class="control-label">Scientific Name</label>
+                    @Html.EditorFor(model => model.SName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="LocalName" class="control-label">Local Name</label>
+
+
+                    @Html.EditorFor(model => model.LocalName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="CommonName" class="control-label">Common Name</label>
+
+
+                    @Html.EditorFor(model => model.CommonName, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="PicTakenBy" class="control-label">Pictures By</label>
+                    @Html.EditorFor(model => model.PicTakenBy, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="ContentBy" class="control-label">Content By</label>
+                    @Html.EditorFor(model => model.ContentBy, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-sm-12" style="padding-bottom:1em;">
+                    <label for="EditedBy" class="control-label">Edited By</label>
+                    @Html.EditorFor(model => model.EditedBy, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-sm-12" style="padding-bottom:1em;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <label for="Description" class="control-label">Description</label>
+
+                <div class="col-sm-12">
+                   <p>
+                   @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control", style = "width: 100% !Important; height: 100% !Important;" } }) 
+                    </p> 
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <img src="~/Content/template/image-logo/flora.png" style="width:50px;height:50px;" />
+                <div class="form-group">
+                    <input type="file" id="ARow" name="file" />
+                </div>
+                <img src="~/Content/template/image-logo/flora.png" style="width:50px;height:50px;" />
+                <div class="form-group">
+                    <input type="file" id="ARow" name="file2" />
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <img src="~/Content/template/image-logo/flora.png" style="width:50px;height:50px;" />
+                <div class="form-group">
+                    <input type="file" id="ARow" name="file3" />
+                </div>
+                <img src="~/Content/template/image-logo/flora.png" style="width:50px;height:50px;" />
+                <div class="form-group">
+                    <input type="file" id="ARow" name="file4" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="offset-5" style="margin-top:15px;">
+                <input type="submit" value="Publish" class="btn btn-primary" />  @Html.ActionLink("Cancel", "Index", "Species", new object { }, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+}
+
+
+

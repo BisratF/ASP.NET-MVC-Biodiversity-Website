@@ -1,0 +1,164 @@
+﻿@model zefitret.Models.SpeciesDataTable
+
+@{
+    ViewBag.Title = "DeleteSpecies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h3 style="text-align:center;">Are you sure you want to delete this?</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-12" style="padding-bottom:1em;">
+                <div><label for="Category" class="control-label">Category</label></div>
+
+                <p id="rectangle">
+                    @Html.DisplayFor(model => model.Category)
+                </p>
+
+
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            <div class="col-sm-12" @*style="padding-bottom:1em;*@ ">
+                <label for="SName" class="control-label">Scientific Name</label>
+                <p id="rectangle-col-6">
+                    @Html.DisplayFor(model => model.SName)
+                </p>
+
+            </div>
+
+            <div class="col-sm-12" @*style="padding-bottom:1em;"*@>
+                <label for="LocalName" class="control-label">Local Name</label>
+                <p id="rectangle-col-6">@Html.DisplayFor(model => model.LocalName)</p>
+            </div>
+
+            <div class="col-sm-12" @*style="padding-bottom:1em;"*@>
+                <label for="CommonName" class="control-label">Common Name</label>
+                <p id="rectangle-col-6">@Html.DisplayFor(model => model.CommonName)</p>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6">
+
+            <div class="col-sm-12" @*style="padding-bottom:1em;"*@>
+                <label for="PicTakenBy" class="control-label">Pictures By</label>
+                <p id="rectangle-col-6"> @Html.DisplayFor(model => model.PicTakenBy)</p>
+            </div>
+
+
+
+            <div class="col-sm-12" @*style="padding-bottom:1em;"*@>
+                <label for="ContentBy" class="control-label">Content By</label>
+                <p id="rectangle-col-6"> @Html.DisplayFor(model => model.ContentBy)</p>
+            </div>
+
+
+
+            <div class="col-sm-12" @*style="padding-bottom:1em;"*@>
+                <label for="EditedBy" class="control-label">Edited By</label>
+                <p id="rectangle-col-6">@Html.DisplayFor(model => model.EditedBy)</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*//----- for picture view and edit ------*@
+
+<div class="container">
+    <div class="row" @*style="background-color:blueviolet;"*@>
+        <div class="col-sm-6" @*style="background-color:#ffd800;"*@>
+            <div class="form-group">
+
+                <div class="col-md-12">
+                    <label for="Description" class="control-label">Description</label>
+                    <p id="rectangle-description">
+                        @Html.DisplayFor(model => model.Description)
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6" @*style="background-color:#808080;"*@>
+
+            <div class="col-md-12">
+
+                @if (Model.MainPic != null)
+            {
+                var base64 = Convert.ToBase64String(Model.MainPic);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    <img src='@imgsrc' id="picForDelete" class="img-responsive" />
+                }
+                else
+                {
+                    <img src="~/Content/template/image-logo/flora.png" id="picForDelete" />
+                }
+
+
+                @if (Model.SecPic != null)
+            {
+                var base64 = Convert.ToBase64String(Model.SecPic);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    <img src='@imgsrc' id="picForDelete" class="img-responsive" />
+                }
+                else
+                {
+                    <img src="~/Content/template/image-logo/flora.png" id="picForDelete" />
+                }
+
+            </div>
+            <div class="col-md-12">
+
+                @if (Model.ThirdPic != null)
+            {
+                var base64 = Convert.ToBase64String(Model.ThirdPic);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    <img src='@imgsrc' id="picForDelete" class="img-responsive" />
+                }
+                else
+                {
+                    <img src="~/Content/template/image-logo/flora.png" id="picForDelete" />
+                }
+
+                @if (Model.FourthPic != null)
+            {
+                var base64 = Convert.ToBase64String(Model.FourthPic);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                    <img src='@imgsrc' id="picForDelete" class="img-responsive" />
+                }
+                else
+                {
+                    <img src="~/Content/template/image-logo/flora.png" id="picForDelete" />
+                }
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="offset-5" style="margin-top:15px;">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            @Html.ActionLink("Cancel", "Index", "Species", new object { }, new { @class = "btn btn-secondary", @style = "padding-left:20px !Important;" })
+
+        </div>
+
+    }
+</div>

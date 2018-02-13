@@ -1,0 +1,202 @@
+﻿@model zefitret.Models.SpeciesDataTable
+@{
+    ViewBag.Title = "Species Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="slider">
+                <div class="wrapper">
+
+                    <!-- Slideshow 3  with bigger pixel -->
+                    <ul class="rslides" id="slider">
+                        <li>
+                            @if (Model.MainPic != null)
+                            {
+                                var base64 = Convert.ToBase64String(Model.MainPic);
+                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                <img src='@imgsrc' data-selector="img" alt="" />
+                            }
+                            else if (Model.MainPic == null)
+                            {
+                                <img src="~/Content/template/image-logo/flora.png" />
+                            }
+                        </li>
+
+
+                        <li>
+                            @if (Model.SecPic != null)
+                            {
+                                var base64 = Convert.ToBase64String(Model.SecPic);
+                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                <img src='@imgsrc' data-selector="img" alt="" />
+                            }
+                            else if (Model.SecPic == null)
+                            {
+                                <img src="~/Content/template/image-logo/flora.png" />
+                            }
+                        </li>
+                        <li>
+                            @if (Model.ThirdPic != null)
+                            {
+                                var base64 = Convert.ToBase64String(Model.ThirdPic);
+                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                <img src='@imgsrc' data-selector="img" alt="" />
+                            }
+                            else if (Model.ThirdPic == null)
+                            {
+                                <img src="~/Content/template/image-logo/flora.png" />
+                            }
+                        </li>
+                        <li>
+                            @if (Model.FourthPic != null)
+                            {
+                                var base64 = Convert.ToBase64String(Model.FourthPic);
+                                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                <img src='@imgsrc' data-selector="img" alt="" />
+                            }
+                            else if (Model.FourthPic == null)
+                            {
+                                <img src="~/Content/template/image-logo/flora.png" />
+                            }
+                        </li>
+
+
+                    </ul>
+                    <!-- Slideshow 3 Pager   with smaller pixle -->
+                    <ul id="slider3-pager">
+                        <li>
+                            <a href="#">
+                                @if (Model.MainPic != null)
+                                {
+                                    var base64 = Convert.ToBase64String(Model.MainPic);
+                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                    <img src='@imgsrc' data-selector="img" alt="" />
+                                }
+                                else if (Model.MainPic == null)
+                                {
+                                    <img src="~/Content/template/image-logo/flora.png" />
+                                }
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                @if (Model.SecPic != null)
+                                {
+                                    var base64 = Convert.ToBase64String(Model.SecPic);
+                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                    <img src='@imgsrc' data-selector="img" alt="" />
+                                }
+                                else if (Model.SecPic == null)
+                                {
+                                    <img src="~/Content/template/image-logo/flora.png" />
+                                }
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                @if (Model.ThirdPic != null)
+                                {
+                                    var base64 = Convert.ToBase64String(Model.ThirdPic);
+                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                    <img src='@imgsrc' data-selector="img" alt="" />
+                                }
+                                else if (Model.ThirdPic == null)
+                                {
+                                    <img src="~/Content/template/image-logo/flora.png" />
+                                }
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                @if (Model.FourthPic != null)
+                                {
+                                    var base64 = Convert.ToBase64String(Model.FourthPic);
+                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                    <img src='@imgsrc' data-selector="img" alt="" />
+                                }
+                                else if (Model.FourthPic == null)
+                                {
+                                    <img src="~/Content/template/image-logo/flora.png" />
+                                }
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-5">
+
+            <div class="col-sm-12">
+                <label for="SName" class="control-label">Scientific Name</label>
+                <p id="rectangle-col-6-detail">
+                    @Html.HiddenFor(model => model.SId)
+                    @Html.DisplayFor(model => model.SName)
+                </p>
+
+            </div>
+
+            <div class="col-sm-12">
+                <label for="LocalName" class="control-label">Local Name</label>
+                <p id="rectangle-col-6-detail">@Html.DisplayFor(model => model.LocalName)</p>
+            </div>
+
+            <div class="col-sm-12">
+                <label for="CommonName" class="control-label">Common Name</label>
+                <p id="rectangle-col-6-detail">@Html.DisplayFor(model => model.CommonName)</p>
+            </div>
+            <div class="col-sm-12">
+                <label for="PicTakenBy" class="control-label">Pictures By</label>
+                <p id="rectangle-col-6-detail"> @Html.DisplayFor(model => model.PicTakenBy)</p>
+            </div>
+
+
+
+            <div class="col-sm-12">
+                <label for="ContentBy" class="control-label">Content By</label>
+                <p id="rectangle-col-6-detail"> @Html.DisplayFor(model => model.ContentBy)</p>
+            </div>
+
+
+
+            <div class="col-sm-12">
+                <label for="EditedBy" class="control-label">Edited By</label>
+                <p id="rectangle-col-6-detail">@Html.DisplayFor(model => model.EditedBy)</p>
+            </div>
+            <div class="col-md-12">
+                <label for="Description" class="control-label">Description</label>
+                <p id="rectangle-description-detail">
+                    @Html.DisplayFor(model => model.Description)
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+
+    </div>
+    <div class="offset-4 col-md-offset-4">
+        <p>
+            @Html.ActionLink("Home", "Index", "Species", new object { }, new { @class = "btn btn-secondary", @style = "margin-bottom:30px !Important;" })
+
+            @{
+                var num = Model.SId;
+            }
+
+            @Html.ActionLink("Edit", "EditSpecies", new { EId = num }, new { @class = "btn btn-primary", @style = "margin-bottom:30px !Important;" })
+        </p>
+
+    </div>
+
+
+</div>

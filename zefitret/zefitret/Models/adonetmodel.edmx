@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="zefitretuserdbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SpeciesDataTable">
+          <Key>
+            <PropertyRef Name="SId" />
+          </Key>
+          <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="SName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LocalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommonName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nchar" MaxLength="400" />
+          <Property Name="MainPic" Type="varbinary(max)" />
+          <Property Name="FileNameMain" Type="nvarchar(max)" />
+          <Property Name="SecPic" Type="varbinary(max)" />
+          <Property Name="FileNameSecond" Type="nvarchar(max)" />
+          <Property Name="ThirdPic" Type="varbinary(max)" />
+          <Property Name="FourthPic" Type="varbinary(max)" />
+          <Property Name="PicTakenBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContentBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="EditedBy" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="PassWord" Type="varchar" MaxLength="50" />
+          <Property Name="Privilege" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="zefitretuserdbModelStoreContainer">
+          <EntitySet Name="SpeciesDataTable" EntityType="Self.SpeciesDataTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="zefitretuserdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="SpeciesDataTable">
+          <Key>
+            <PropertyRef Name="SId" />
+          </Key>
+          <Property Name="SId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LocalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CommonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="400" FixedLength="true" Unicode="true" />
+          <Property Name="MainPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileNameMain" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileNameSecond" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThirdPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FourthPic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PicTakenBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContentBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EditedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Privilege" Type="String" />
+        </EntityType>
+        <EntityContainer Name="zefitretuserdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SpeciesDataTables" EntityType="Self.SpeciesDataTable" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="zefitretuserdbModelStoreContainer" CdmEntityContainer="zefitretuserdbEntities">
+          <EntitySetMapping Name="SpeciesDataTables">
+            <EntityTypeMapping TypeName="zefitretuserdbModel.SpeciesDataTable">
+              <MappingFragment StoreEntitySet="SpeciesDataTable">
+                <ScalarProperty Name="SId" ColumnName="SId" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="SName" ColumnName="SName" />
+                <ScalarProperty Name="LocalName" ColumnName="LocalName" />
+                <ScalarProperty Name="CommonName" ColumnName="CommonName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MainPic" ColumnName="MainPic" />
+                <ScalarProperty Name="FileNameMain" ColumnName="FileNameMain" />
+                <ScalarProperty Name="SecPic" ColumnName="SecPic" />
+                <ScalarProperty Name="FileNameSecond" ColumnName="FileNameSecond" />
+                <ScalarProperty Name="ThirdPic" ColumnName="ThirdPic" />
+                <ScalarProperty Name="FourthPic" ColumnName="FourthPic" />
+                <ScalarProperty Name="PicTakenBy" ColumnName="PicTakenBy" />
+                <ScalarProperty Name="ContentBy" ColumnName="ContentBy" />
+                <ScalarProperty Name="EditedBy" ColumnName="EditedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="zefitretuserdbModel.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
